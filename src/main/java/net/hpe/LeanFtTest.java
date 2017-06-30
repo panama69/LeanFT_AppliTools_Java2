@@ -55,6 +55,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void test() throws GeneralLeanFtException, IOException, CloneNotSupportedException, InterruptedException, ReportException {
+        String appUrl = "www.advantageonlineshopping.com";
         BufferedImage img;
         RenderedImage pageImg;
 
@@ -64,11 +65,11 @@ public class LeanFtTest extends UnitTestClassBase {
         eyes.setApiKey("Z2Q1xi5kYILL8o6XavpjYnYtvCfV3111SSR2U102Rdfse1s110");
 
         // Define the OS and hosting application to identify the baseline.
-        eyes.setHostOS("Put your host name here");
-        eyes.setHostApp("put your host app name here");
+        eyes.setHostOS(java.net.Inet4Address.getLocalHost().getHostName());
+        eyes.setHostApp(appUrl);
 
         Browser browser = BrowserFactory.launch(BrowserType.CHROME);
-        browser.navigate("www.advantageonlineshopping.com");
+        browser.navigate(appUrl);
         browser.sync();
         //Thread.sleep(5000);
         browser.describe(Link.class, new LinkDescription.Builder()
